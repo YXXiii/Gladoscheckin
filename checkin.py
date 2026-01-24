@@ -48,13 +48,12 @@ HEADERS_TEMPLATE = {
 EXCHANGE_POINTS = {"plan100": 100, "plan200": 200, "plan500": 500}
 
 def load_config() -> Tuple[str, List[str], str]:
-    push_key = os.environ.get(ENV_PUSH_KEY, '')
-    raw_cookies = os.environ.get(ENV_COOKIES, '')
-    exchange_plan = os.environ.get(ENV_EXCHANGE_PLAN, "plan500")
+    push_key = os.environ.get(ENV_PUSH_KEY, 'PDU32605TGGDBuIu2OJYcu5IigeMPXrF72PgNL51l')
+    raw_cookies = os.environ.get(ENV_COOKIES, 'koa:sess=eyJ1c2VySWQiOjE1NjQ0NywiX2V4cGlyZSI6MTc5NTE1Nzk5NDcyMSwiX21heEFnZSI6MjU5MjAwMDAwMDB9; koa:sess.sig=dz_agvaptDCRhisKE3k5pX7esVs')
+    exchange_plan = os.environ.get(ENV_EXCHANGE_PLAN, 'plan500')
 
     if not raw_cookies:
         logger.warning(f"环境变量 '{ENV_COOKIES}' 未设置。")
-        cookies_list = []
         cookies_list = []
     else:
         cookies_list = [cookie.strip() for cookie in raw_cookies.split('&') if cookie.strip()]
